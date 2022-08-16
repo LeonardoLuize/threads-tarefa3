@@ -1,15 +1,37 @@
 public class FilaVenda {
-    private int[] fila;
+    private Venda[] fila;
+    private int tamanho;
+    private int contador;
 
     public FilaVenda(int tamanho){
-        this.fila = new int[tamanho];
+        this.fila = new Venda[tamanho];
+        this.tamanho = tamanho;
+        this.contador = 0;
     }
 
-    public int[] getFila() {
+    public void append(Venda venda){
+        if(contador == tamanho){
+            return;
+        }
+
+        fila[contador] = venda;
+        contador++;
+    }
+
+    public void pop(){
+        if(contador == 0){
+            return;
+        }
+
+        fila[contador - 1] = null;
+        contador--;
+    }
+
+    public Venda[] getFila() {
         return fila;
     }
 
-    public void setFila(int[] fila) {
+    public void setFila(Venda[] fila) {
         this.fila = fila;
     }
 }
