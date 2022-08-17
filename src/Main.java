@@ -8,7 +8,7 @@ public class Main {
         Semaphore s2 = new Semaphore(0);
 
         int contador_vendas = 0;
-        Loja loja1 = new Loja("A", contador_vendas);
+        Loja loja1 = new Loja("A", contador_vendas, 1, fila_venda);
 
         Fabricante fabricante = new Fabricante();
     }
