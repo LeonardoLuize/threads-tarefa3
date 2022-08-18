@@ -7,6 +7,10 @@ public class Venda {
         this.produto = produto;
     }
 
+    public Venda(){
+
+    }
+
     public String getProduto() {
         return produto;
     }

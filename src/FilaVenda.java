@@ -18,13 +18,16 @@ public class FilaVenda {
         contador++;
     }
 
-    public void pop(){
+    public Venda pop(){
         if(contador == 0){
-            return;
+            return new Venda();
         }
 
+        Venda excluida = fila[contador - 1];
         fila[contador - 1] = null;
         contador--;
+
+        return excluida;
     }
 
     public Venda[] getFila() {
