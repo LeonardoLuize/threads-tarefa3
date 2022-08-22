@@ -20,6 +20,7 @@ public class Fabricante extends Thread{
                 itens.acquire();
                 mutex.acquire();
 
+                System.out.println();
                 Venda fabricado = fila_vendas.pop();
                 System.out.println("Fabricado: " + fabricado.getIdVenda());
 

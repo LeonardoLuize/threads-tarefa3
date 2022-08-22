@@ -32,7 +32,7 @@ public class Loja extends Thread{
 
                 Venda venda = new Venda(this, "A");
                 fila_venda.append(venda);
-                System.out.println("Vendendo: " + venda.getProduto() + "| Loja: " + venda.getIdVenda());
+                System.out.println("Vendendo: " + venda.getProduto() + " Loja: " + venda.getIdVenda());
 
                 mutex.release();
                 itens.release();
