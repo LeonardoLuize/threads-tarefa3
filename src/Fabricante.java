@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-public class Fabricante extends Thread{
-
-    private FilaVenda fila_vendas;
-
-    public Fabricante(FilaVenda fila_vendas){
-        this.fila_vendas = fila_vendas;
-=======
 import java.util.concurrent.Semaphore;
 
 public class Fabricante extends Thread{
@@ -22,14 +14,10 @@ public class Fabricante extends Thread{
         this.mutex = mutex;
         this.itens = itens;
         this.espacos = espacos;
->>>>>>> b9dbc86b3d86dca3ec6f86d54e2e6befb8b4d22f
     }
 
     public void run(){
         while (true){
-<<<<<<< HEAD
-            fila_vendas.pop();
-=======
             try{
                 itens.acquire();
                 mutex.acquire();
@@ -46,7 +34,6 @@ public class Fabricante extends Thread{
             catch(Exception e){
                 System.out.println(e);
             }
->>>>>>> b9dbc86b3d86dca3ec6f86d54e2e6befb8b4d22f
         }
     }
 }
