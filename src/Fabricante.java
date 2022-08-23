@@ -33,7 +33,7 @@ public class Fabricante extends Thread{
                 System.out.println();
                 Venda fabricado = fila_vendas.pop();
                 System.out.println("Fabricado: " + fabricado.getIdVenda());
-                fila_entrega.append(new Entrega(this.nome, fabricado.getProduto()));
+                fila_entrega.append(new Entrega(this.nome, fabricado.getIdVenda()));
 
                 mutexEntrega.release();
                 mutex.release();
