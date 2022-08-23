@@ -11,13 +11,12 @@ public class FilaVenda {
 
     public void append(Venda venda){
         fila.add(venda);
-        contador++;
     }
 
     public Venda pop(){
         Venda excluida = fila.get(contador - 1);
         fila.remove(contador - 1);
-        contador--;
+        contador++;
 
         return excluida;
     }
