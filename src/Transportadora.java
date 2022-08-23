@@ -16,8 +16,8 @@ public class Transportadora extends Thread{
                 //itens.acquire();
                 mutex.acquire();
 
-                Venda fabricado = fila_entrega.pop();
-                System.out.println("Fabricado: " + fabricado.getIdVenda());
+                Entrega fabricado = fila_entrega.pop();
+                System.out.println("Fabricado: " + fabricado.getIdEntrega());
 
                 mutex.release();
                 //espacos.release();
