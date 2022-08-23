@@ -6,7 +6,7 @@ public class Main {
 
         Semaphore mutex = new Semaphore( 1 );
         Semaphore itens = new Semaphore( 0 );
-        Semaphore espacos = new Semaphore( 100 );w
+        Semaphore espacos = new Semaphore( 100 );
 
         int contador_vendas = 0;
         Loja loja1 = new Loja("A", contador_vendas, 1, fila_venda, mutex, itens, espacos);
