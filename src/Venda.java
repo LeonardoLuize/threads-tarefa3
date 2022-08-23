@@ -3,7 +3,7 @@ public class Venda {
     private String produto;
 
     public Venda(Loja loja, String produto){
-        this.idVenda = String.format("%s/%d", loja.getNomeLoja(), loja.getId());
+        this.idVenda = String.format("%s/%s/%d", produto, loja.getNomeLoja(), loja.getIdLoja());
         this.produto = produto;
     }
 

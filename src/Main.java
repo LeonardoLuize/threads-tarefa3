@@ -13,7 +13,7 @@ public class Main {
         Semaphore espacos = new Semaphore( 100 );
 
         int contador_vendas = 0;
-        Loja loja1 = new Loja("A", contador_vendas, 1, fila_venda, mutex, itens);
+        Loja loja1 = new Loja("Loja-A", contador_vendas, 1, fila_venda, mutex, itens);
 
         Fabricante fabricante = new Fabricante("f1", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
         Transportadora transportadora = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos);
