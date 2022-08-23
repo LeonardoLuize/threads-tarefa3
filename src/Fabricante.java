@@ -2,6 +2,7 @@ import java.util.concurrent.Semaphore;
 
 public class Fabricante extends Thread{
 
+    private int fabricanteId;
     private String nome;
     private FilaVenda fila_vendas;
     private FilaEntrega fila_entrega;
@@ -11,7 +12,8 @@ public class Fabricante extends Thread{
     private Semaphore mutexEntrega;
     private Semaphore espacos;
 
-    public Fabricante(String nome, FilaVenda fila_vendas, FilaEntrega fila_entrega, Semaphore mutex, Semaphore itens, Semaphore espacos, Semaphore mutexEntrega, Semaphore entregas){
+    public Fabricante(int fabricanteId, String nome, FilaVenda fila_vendas, FilaEntrega fila_entrega, Semaphore mutex, Semaphore itens, Semaphore espacos, Semaphore mutexEntrega, Semaphore entregas){
+        this.fabricanteId = fabricanteId;
         this.nome = nome;
         this.fila_vendas = fila_vendas;
         this.fila_entrega = fila_entrega;
@@ -30,15 +32,14 @@ public class Fabricante extends Thread{
                 mutex.acquire();
                 mutexEntrega.acquire();
 
-                System.out.println();
                 Venda fabricado = fila_vendas.pop();
-                System.out.println("Fabricado: " + fabricado.getIdVenda());
+                System.out.println("\nFabricado: " + fabricado.getIdVenda());
                 fila_entrega.append(new Entrega(this.nome, fabricado.getIdVenda()));
 
                 mutexEntrega.release();
                 mutex.release();
                 entregas.release();
-                Thread.sleep(3000);
+                Thread.sleep(fabricado.getProduto().generateRandomTime(fabricanteId, fabricado.getProduto().getProdutoId()));
             }
             catch(Exception e){
                 System.out.println(e);

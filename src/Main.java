@@ -13,13 +13,39 @@ public class Main {
         Semaphore espacos = new Semaphore( 100 );
 
         int contador_vendas = 0;
-        Loja loja1 = new Loja("Loja-A", contador_vendas, 1, fila_venda, mutex, itens);
 
-        Fabricante fabricante = new Fabricante("f1", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
-        Transportadora transportadora = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos);
+        Loja loja1 = new Loja("Loja-A", contador_vendas, 1, fila_venda, mutex, itens);
+        Loja loja2 = new Loja("Loja-B", contador_vendas, 2, fila_venda, mutex, itens);
+        Loja loja3 = new Loja("Loja-C", contador_vendas, 3, fila_venda, mutex, itens);
+        Loja loja4 = new Loja("Loja-D", contador_vendas, 4, fila_venda, mutex, itens);
+        Loja loja5 = new Loja("Loja-E", contador_vendas, 5, fila_venda, mutex, itens);
+        Loja loja6 = new Loja("Loja-F", contador_vendas, 6, fila_venda, mutex, itens);
+        Loja loja7 = new Loja("Loja-G", contador_vendas, 7, fila_venda, mutex, itens);
+        Loja loja8 = new Loja("Loja-H", contador_vendas, 8, fila_venda, mutex, itens);
+
+        Fabricante fabricante1 = new Fabricante(1, "fabricante-1", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
+        Fabricante fabricante2 = new Fabricante(2, "fabricante-2", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
+        Fabricante fabricante3 = new Fabricante(3, "fabricante-3", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
+        Fabricante fabricante4 = new Fabricante(4, "fabricante-4", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
+
+        Transportadora transportadora1 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos);
+        Transportadora transportadora2 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos);
 
         loja1.start();
-        fabricante.start();
-        transportadora.start();
+        loja2.start();
+        loja3.start();
+        loja4.start();
+        loja5.start();
+        loja6.start();
+        loja7.start();
+        loja8.start();
+
+        fabricante1.start();
+        fabricante2.start();
+        fabricante3.start();
+        fabricante4.start();
+
+        transportadora1.start();
+        transportadora2.start();
     }
 }

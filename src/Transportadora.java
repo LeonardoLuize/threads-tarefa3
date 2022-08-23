@@ -21,7 +21,7 @@ public class Transportadora extends Thread{
                 mutexEntregas.acquire();
 
                 Entrega fabricado = fila_entrega.pop();
-                System.out.println("Entregue: " + fabricado.getIdEntrega());
+                System.out.println("\nEntregue: " + fabricado.getIdEntrega());
 
                 mutexEntregas.release();
                 espacos.release();

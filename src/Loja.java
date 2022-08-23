@@ -38,13 +38,13 @@ public class Loja extends Thread{
                 Random random = new Random();
                 int randomIndex = random.nextInt(0,7);
 
-                Venda venda = new Venda(this, produtos[randomIndex].getNome());
+                Venda venda = new Venda(this, produtos[randomIndex]);
                 fila_venda.append(venda);
-                System.out.println("Vendendo: " + venda.getProduto() + " Loja: " + venda.getIdVenda());
+                System.out.println("\nVendendo: " + venda.getProduto().getNome() + " Loja: " + nomeLoja);
 
                 mutex.release();
                 itens.release();
-                Thread.sleep(produtos[randomIndex].generateRandomTime());
+                Thread.sleep(3000);
             }
             catch(Exception e){
                 System.out.println(e);
