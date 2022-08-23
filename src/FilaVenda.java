@@ -1,37 +1,27 @@
+import java.util.ArrayList;
+
 public class FilaVenda {
-    private Venda[] fila;
-    private int tamanho;
+    private ArrayList<Venda> fila;
     private int contador;
 
-    public FilaVenda(int tamanho){
-        this.fila = new Venda[tamanho];
-        this.tamanho = tamanho;
+    public FilaVenda(){
+        this.fila = new ArrayList<Venda>();
         this.contador = 0;
     }
 
     public void append(Venda venda){
-        if(contador == tamanho){
-            return;
-        }
+        fila.add(venda);
+    }
 
-        fila[contador] = venda;
+    public Venda pop(){
+        Venda excluida = fila.get(contador - 1);
+        fila.remove(contador - 1);
         contador++;
+
+        return excluida;
     }
 
-    public void pop(){
-        if(contador == 0){
-            return;
-        }
-
-        fila[contador - 1] = null;
-        contador--;
-    }
-
-    public Venda[] getFila() {
+    public ArrayList<Venda> getFila() {
         return fila;
-    }
-
-    public void setFila(Venda[] fila) {
-        this.fila = fila;
     }
 }
