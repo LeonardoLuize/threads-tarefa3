@@ -5,9 +5,9 @@ public class Entrega {
 
 
 
-    public Entrega(Fabricante fabricante,String produto){
+    public Entrega(String fabricante,String produto){
 
-        this.idEntrega = String.format("%s/%d", fabricante.getidFabricante(), produto);
+        this.idEntrega = String.format("%s/%s", fabricante, produto);
         this.produto = produto;
 
     }

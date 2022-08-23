@@ -14,8 +14,8 @@ public class FilaVenda {
     }
 
     public Venda pop(){
-        Venda excluida = fila.get(contador - 1);
-        fila.remove(contador - 1);
+        Venda excluida = fila.get(contador);
+        fila.remove(contador);
         contador++;
 
         return excluida;

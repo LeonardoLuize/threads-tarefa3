@@ -14,8 +14,8 @@ public class FilaEntrega {
     }
 
     public Entrega pop(){
-        Entrega concluida = fila.get(contador - 1);
-        fila.remove(contador - 1);
+        Entrega concluida = fila.get(contador);
+        fila.remove(contador);
         contador++;
 
         return concluida;

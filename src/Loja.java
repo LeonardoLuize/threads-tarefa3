@@ -33,6 +33,7 @@ public class Loja extends Thread{
 
                 mutex.release();
                 itens.release();
+                Thread.sleep(2000);
             }
             catch(Exception e){
                 System.out.println(e);

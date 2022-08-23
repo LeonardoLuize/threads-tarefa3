@@ -15,10 +15,11 @@ public class Main {
         int contador_vendas = 0;
         Loja loja1 = new Loja("A", contador_vendas, 1, fila_venda, mutex, itens);
 
-        Fabricante fabricante = new Fabricante(fila_venda, mutex, itens, espacos);
+        Fabricante fabricante = new Fabricante("f1", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
         Transportadora transportadora = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos);
 
         loja1.start();
         fabricante.start();
+        transportadora.start();
     }
 }
