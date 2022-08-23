@@ -13,26 +13,23 @@ public class Loja extends Thread{
     private Semaphore itens;
     private Semaphore espacos;
 
-    public Loja(String nomeLoja, int contadorVendas, int id, FilaVenda fila_venda, Semaphore mutex, Semaphore itens, Semaphore espacos) {
+    public Loja(String nomeLoja, int contadorVendas, int id, FilaVenda fila_venda, Semaphore mutex, Semaphore itens) {
         this.nomeLoja = nomeLoja;
         this.contadorVendas = contadorVendas;
         this.id = id;
         this.fila_venda = fila_venda;
         this.mutex = mutex;
         this.itens = itens;
-        this.espacos = espacos;
     }
-
 
     public void run(){
         while (true){
             try{
-                espacos.acquire();
                 mutex.acquire();
 
                 Venda venda = new Venda(this, "A");
                 fila_venda.append(venda);
-                System.out.println("Vendendo: " + venda.getProduto() + "| Loja: " + venda.getIdVenda());
+                System.out.println("Vendendo: " + venda.getProduto() + " Loja: " + venda.getIdVenda());
 
                 mutex.release();
                 itens.release();
