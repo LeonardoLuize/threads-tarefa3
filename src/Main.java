@@ -2,7 +2,7 @@ import java.util.concurrent.Semaphore;
 
 public class Main {
     public static void main(String[] args) {
-        FilaVenda fila_venda = new FilaVenda(100);
+        FilaVenda fila_venda = new FilaVenda();
 
         Semaphore mutex = new Semaphore( 1 );
         Semaphore itens = new Semaphore( 0 );
