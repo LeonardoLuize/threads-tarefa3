@@ -22,10 +22,11 @@ public class Transportadora extends Thread{
 
                 Entrega fabricado = fila_entrega.pop();
                 System.out.println("\nEntregue: " + fabricado.getIdEntrega());
+                Transporte transporte = new Transporte();
 
                 mutexEntregas.release();
                 espacos.release();
-                Thread.sleep(3000);
+                transporte.start();
             }
             catch(Exception e){
                 System.out.println(e);
