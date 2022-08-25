@@ -12,8 +12,6 @@ public class Main {
         Semaphore entregas = new Semaphore( 0 );
         Semaphore espacos = new Semaphore( 100 );
 
-        Semaphore limiteTransporte = new Semaphore( 10 );
-
         int contador_vendas = 0;
 
         Loja loja1 = new Loja("Loja-A", contador_vendas, 1, fila_venda, mutex, itens);
@@ -25,13 +23,13 @@ public class Main {
         Loja loja7 = new Loja("Loja-G", contador_vendas, 7, fila_venda, mutex, itens);
         Loja loja8 = new Loja("Loja-H", contador_vendas, 8, fila_venda, mutex, itens);
 
-        Fabricante fabricante1 = new Fabricante(1, "fabricante-1", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
-        Fabricante fabricante2 = new Fabricante(2, "fabricante-2", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
-        Fabricante fabricante3 = new Fabricante(3, "fabricante-3", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
-        Fabricante fabricante4 = new Fabricante(4, "fabricante-4", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
+        Fabricante fabricante1 = new Fabricante(1, "fabricante-1", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas, 4);
+        Fabricante fabricante2 = new Fabricante(2, "fabricante-2", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas, 1);
+        Fabricante fabricante3 = new Fabricante(3, "fabricante-3", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas, 4);
+        Fabricante fabricante4 = new Fabricante(4, "fabricante-4", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas, 4);
 
-        Transportadora transportadora1 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos, limiteTransporte);
-        Transportadora transportadora2 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos, limiteTransporte);
+        Transportadora transportadora1 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos, 10, 100, 200);
+        Transportadora transportadora2 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos, 20, 400, 600);
 
         loja1.start();
         loja2.start();

@@ -9,7 +9,6 @@ public class Loja extends Thread{
     private FilaVenda fila_venda;
     private Semaphore mutex;
     private Semaphore itens;
-    private Semaphore espacos;
     private Produto[] produtos;
 
     public Loja(String nomeLoja, int contadorVendas, int idLoja, FilaVenda fila_venda, Semaphore mutex, Semaphore itens) {
@@ -40,11 +39,13 @@ public class Loja extends Thread{
 
                 Venda venda = new Venda(this, produtos[randomIndex]);
                 fila_venda.append(venda);
-                System.out.println("\nVendendo: " + venda.getProduto().getNome() + " Loja: " + nomeLoja);
+                System.out.println("\nVendendo Produto: " + venda.getProduto().getNome());
+                System.out.println("da: " + nomeLoja);
 
                 mutex.release();
                 itens.release();
-                Thread.sleep(3000);
+                Random random2 = new Random();
+                Thread.sleep(random2.nextInt(1000 * 60 * 10, 1000 * 60 * 150));
             }
             catch(Exception e){
                 System.out.println(e);

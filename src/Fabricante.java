@@ -11,8 +11,9 @@ public class Fabricante extends Thread{
     private Semaphore entregas;
     private Semaphore mutexEntrega;
     private Semaphore espacos;
+    private Semaphore limiteFabricante;
 
-    public Fabricante(int fabricanteId, String nome, FilaVenda fila_vendas, FilaEntrega fila_entrega, Semaphore mutex, Semaphore itens, Semaphore espacos, Semaphore mutexEntrega, Semaphore entregas){
+    public Fabricante(int fabricanteId, String nome, FilaVenda fila_vendas, FilaEntrega fila_entrega, Semaphore mutex, Semaphore itens, Semaphore espacos, Semaphore mutexEntrega, Semaphore entregas, int limite){
         this.fabricanteId = fabricanteId;
         this.nome = nome;
         this.fila_vendas = fila_vendas;
@@ -22,6 +23,7 @@ public class Fabricante extends Thread{
         this.itens = itens;
         this.entregas = entregas;
         this.espacos = espacos;
+        this.limiteFabricante = new Semaphore(limite);
     }
 
     public void run(){
@@ -31,15 +33,13 @@ public class Fabricante extends Thread{
                 itens.acquire();
                 mutex.acquire();
                 mutexEntrega.acquire();
-
-                Venda fabricado = fila_vendas.pop();
-                System.out.println("\nFabricado: " + fabricado.getIdVenda());
-                fila_entrega.append(new Entrega(this.nome, fabricado.getIdVenda()));
-
+                limiteFabricante.acquire();
+                Fabricacao fabricacao = new Fabricacao(this, fila_vendas, fila_entrega);
+                fabricacao.run();
+                limiteFabricante.release();
                 mutexEntrega.release();
                 mutex.release();
                 entregas.release();
-                Thread.sleep(fabricado.getProduto().generateRandomTime(fabricanteId, fabricado.getProduto().getProdutoId()));
             }
             catch(Exception e){
                 System.out.println(e);
@@ -49,5 +49,9 @@ public class Fabricante extends Thread{
 
     public String getNome() {
         return nome;
+    }
+
+    public int getFabricanteId() {
+        return fabricanteId;
     }
 }
