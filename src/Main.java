@@ -12,6 +12,8 @@ public class Main {
         Semaphore entregas = new Semaphore( 0 );
         Semaphore espacos = new Semaphore( 100 );
 
+        Semaphore limiteTransporte = new Semaphore( 10 );
+
         int contador_vendas = 0;
 
         Loja loja1 = new Loja("Loja-A", contador_vendas, 1, fila_venda, mutex, itens);
@@ -28,8 +30,8 @@ public class Main {
         Fabricante fabricante3 = new Fabricante(3, "fabricante-3", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
         Fabricante fabricante4 = new Fabricante(4, "fabricante-4", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas);
 
-        Transportadora transportadora1 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos);
-        Transportadora transportadora2 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos);
+        Transportadora transportadora1 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos, limiteTransporte);
+        Transportadora transportadora2 = new Transportadora(fila_entrega, mutexEntrega, entregas, espacos, limiteTransporte);
 
         loja1.start();
         loja2.start();
