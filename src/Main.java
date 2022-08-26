@@ -12,16 +12,18 @@ public class Main {
         Semaphore entregas = new Semaphore( 0 );
         Semaphore espacos = new Semaphore( 100 );
 
-        int contador_vendas = 0;
+        Semaphore contadorLimite = new Semaphore( 1 );
+        int[] contador_vendas = new int[1];
+        contador_vendas[0] = 0;
 
-        Loja loja1 = new Loja("Loja-A", contador_vendas, 1, fila_venda, mutex, itens);
-        Loja loja2 = new Loja("Loja-B", contador_vendas, 2, fila_venda, mutex, itens);
-        Loja loja3 = new Loja("Loja-C", contador_vendas, 3, fila_venda, mutex, itens);
-        Loja loja4 = new Loja("Loja-D", contador_vendas, 4, fila_venda, mutex, itens);
-        Loja loja5 = new Loja("Loja-E", contador_vendas, 5, fila_venda, mutex, itens);
-        Loja loja6 = new Loja("Loja-F", contador_vendas, 6, fila_venda, mutex, itens);
-        Loja loja7 = new Loja("Loja-G", contador_vendas, 7, fila_venda, mutex, itens);
-        Loja loja8 = new Loja("Loja-H", contador_vendas, 8, fila_venda, mutex, itens);
+        Loja loja1 = new Loja("Loja-A", contador_vendas, 1, fila_venda, mutex, itens,contadorLimite);
+        Loja loja2 = new Loja("Loja-B", contador_vendas, 2, fila_venda, mutex, itens,contadorLimite);
+        Loja loja3 = new Loja("Loja-C", contador_vendas, 3, fila_venda, mutex, itens,contadorLimite);
+        Loja loja4 = new Loja("Loja-D", contador_vendas, 4, fila_venda, mutex, itens,contadorLimite);
+        Loja loja5 = new Loja("Loja-E", contador_vendas, 5, fila_venda, mutex, itens,contadorLimite);
+        Loja loja6 = new Loja("Loja-F", contador_vendas, 6, fila_venda, mutex, itens,contadorLimite);
+        Loja loja7 = new Loja("Loja-G", contador_vendas, 7, fila_venda, mutex, itens,contadorLimite);
+        Loja loja8 = new Loja("Loja-H", contador_vendas, 8, fila_venda, mutex, itens,contadorLimite);
 
         Fabricante fabricante1 = new Fabricante(1, "fabricante-1", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas, 4);
         Fabricante fabricante2 = new Fabricante(2, "fabricante-2", fila_venda, fila_entrega, mutex, itens, espacos, mutexEntrega, entregas, 1);
