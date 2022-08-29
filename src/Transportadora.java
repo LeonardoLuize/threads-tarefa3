@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.concurrent.Semaphore;
 
 public class Transportadora extends Thread{
@@ -25,16 +26,18 @@ public class Transportadora extends Thread{
             try{
                 entregas.acquire();
                 mutexEntregas.acquire();
+                Date t1 = new Date();
 
                 Entrega fabricado = fila_entrega.pop();
                 System.out.println("\nEntregue produto: " + fabricado.getProduto());
                 System.out.println("IdEntrega: " + fabricado.getIdEntrega());
                 System.out.println("fila_entrega: " + fila_entrega.imprimir());
-
                 limiteTransporte.acquire();
                 Transporte transporte = new Transporte(minTime, maxTime);
                 transporte.start();
                 transporte.join();
+                Date t2 = new Date();
+                System.out.println("Tempo de transporte: " + (t2.getSeconds()-t1.getSeconds()) + "segundos");
                 mutexEntregas.release();
                 espacos.release();
                 limiteTransporte.release();
