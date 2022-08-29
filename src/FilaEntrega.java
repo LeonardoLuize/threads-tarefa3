@@ -10,6 +10,10 @@ public class FilaEntrega {
         this.local = 0;
     }
 
+    public String imprimir(){
+        return fila.toString();
+    }
+
     public void append(Entrega entrega){
         fila.add(entrega);
         contador++;

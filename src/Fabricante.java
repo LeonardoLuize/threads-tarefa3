@@ -35,7 +35,8 @@ public class Fabricante extends Thread{
                 mutexEntrega.acquire();
                 limiteFabricante.acquire();
                 Fabricacao fabricacao = new Fabricacao(this, fila_vendas, fila_entrega);
-                fabricacao.run();
+                fabricacao.start();
+                fabricacao.join();
                 limiteFabricante.release();
                 mutexEntrega.release();
                 mutex.release();

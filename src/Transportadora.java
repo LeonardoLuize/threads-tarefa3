@@ -29,13 +29,14 @@ public class Transportadora extends Thread{
                 Entrega fabricado = fila_entrega.pop();
                 System.out.println("\nEntregue produto: " + fabricado.getProduto());
                 System.out.println("IdEntrega: " + fabricado.getIdEntrega());
+                System.out.println("fila_entrega: " + fila_entrega.imprimir());
 
                 limiteTransporte.acquire();
                 Transporte transporte = new Transporte(minTime, maxTime);
-
+                transporte.start();
+                transporte.join();
                 mutexEntregas.release();
                 espacos.release();
-                transporte.start();
                 limiteTransporte.release();
             }
             catch(Exception e){

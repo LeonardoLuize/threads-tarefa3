@@ -106,10 +106,10 @@ public class Produto {
     public int generateRandomTime(int fabricanteId, int produtoId){
         Random random = new Random();
 
-        if(fabricanteId == 1) return random.nextInt(60 * 1000 * temposMin1[produtoId], 60 * 1000 * temposMax1[produtoId]);
-        if(fabricanteId == 2) return random.nextInt(60 * 1000 * temposMin2[produtoId], 60 * 1000 * temposMax2[produtoId]);
-        if(fabricanteId == 3) return random.nextInt(60 * 1000 * temposMin3[produtoId], 60 * 1000 * temposMax3[produtoId]);
-        if(fabricanteId == 4) return random.nextInt(60 * 1000 * temposMin4[produtoId], 60 * 1000 * temposMax4[produtoId]);
+        if(fabricanteId == 1) return random.nextInt(10 * temposMin1[produtoId], 10 * temposMax1[produtoId]);
+        if(fabricanteId == 2) return random.nextInt( 10 * temposMin2[produtoId], 10 * temposMax2[produtoId]);
+        if(fabricanteId == 3) return random.nextInt(10 * temposMin3[produtoId], 10 * temposMax3[produtoId]);
+        if(fabricanteId == 4) return random.nextInt(10 * temposMin4[produtoId], 10 * temposMax4[produtoId]);
 
         return 0;
     }

@@ -11,6 +11,10 @@ public class FilaVenda {
         this.local = 0;
     }
 
+    public String imprimir(){
+        return fila.toString();
+    }
+
     public void append(Venda venda){
         fila.add(venda);
         this.contador++;

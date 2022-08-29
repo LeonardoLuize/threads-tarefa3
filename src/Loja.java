@@ -48,11 +48,12 @@ public class Loja extends Thread{
                 System.out.println("\nVendendo Produto: " + venda.getProduto().getNome());
                 System.out.println("da: " + nomeLoja);
                 System.out.println("Contador venda: " + contadorVendas[0]);
+                System.out.println("fila_venda: " + fila_venda.imprimir());
 
                 mutex.release();
                 itens.release();
                 Random random2 = new Random();
-                Thread.sleep(random2.nextInt(1000 * 60 * 10, 1000 * 60 * 150));
+                Thread.sleep(random2.nextInt(1000 * 10, 1000 * 150));
             }
             catch(Exception e){
                 System.out.println(e);
@@ -60,8 +61,6 @@ public class Loja extends Thread{
 
         }
     }
-
-
 
     public String getNomeLoja() {
         return nomeLoja;

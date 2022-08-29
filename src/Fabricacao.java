@@ -15,8 +15,10 @@ public class Fabricacao extends Thread{
             Thread.sleep(fabricado.getProduto().generateRandomTime(fabricante.getFabricanteId(), fabricado.getProduto().getProdutoId()));
             System.out.println("\nFabricado: " + fabricado.getProduto().getNome());
             System.out.println("IdVenda: " + fabricado.getIdVenda());
+            System.out.println("fila_venda: " + fila_venda.imprimir());
 
             fila_entrega.append(new Entrega(fabricante.getNome(), fabricado.getIdVenda()));
+            System.out.println("fila_entrega: " + fila_entrega.imprimir());
         } catch (Exception e) {
             System.out.println(e);
         }

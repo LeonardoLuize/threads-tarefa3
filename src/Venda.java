@@ -3,11 +3,16 @@ public class Venda {
     private Produto produto;
 
     public Venda(Loja loja, Produto produto, int numVenda){
-        this.idVenda = String.format("%s-%d/%s/%d", produto.getNome(), numVenda, loja.getNomeLoja(), loja.getIdLoja());
+        this.idVenda = String.format("%s-%d-%s", produto.getNome(), numVenda, loja.getNomeLoja());
         this.produto = produto;
     }
 
     public Venda(){
+    }
+
+    @Override
+    public String toString() {
+        return idVenda;
     }
 
     public Produto getProduto() {

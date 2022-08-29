@@ -12,7 +12,7 @@ public class Transporte extends Thread{
     public void run() {
         try {
             Random random = new Random();
-            Thread.sleep(random.nextInt(60 * 1000 * minTime, 60 * 1000 * maxTime));
+            Thread.sleep(random.nextInt(10 * minTime, 10 * maxTime));
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
