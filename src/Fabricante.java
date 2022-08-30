@@ -35,13 +35,9 @@ public class Fabricante extends Thread{
                 mutex.acquire();
                 mutexEntrega.acquire();
                 limiteFabricante.acquire();
-                Date t1 = new Date();
-
                 Fabricacao fabricacao = new Fabricacao(this, fila_vendas, fila_entrega);
                 fabricacao.start();
                 fabricacao.join();
-                Date t2 = new Date();
-                System.out.println("Tempo de fabricacao: " + (t2.getSeconds()-t1.getSeconds()) + " segundos");
                 limiteFabricante.release();
                 mutexEntrega.release();
                 mutex.release();

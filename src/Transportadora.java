@@ -26,7 +26,7 @@ public class Transportadora extends Thread{
             try{
                 entregas.acquire();
                 mutexEntregas.acquire();
-                Date t1 = new Date();
+                int t1 = new Date().getSeconds();
 
                 Entrega fabricado = fila_entrega.pop();
                 System.out.println("\nEntregue produto: " + fabricado.getProduto());
@@ -36,8 +36,8 @@ public class Transportadora extends Thread{
                 Transporte transporte = new Transporte(minTime, maxTime);
                 transporte.start();
                 transporte.join();
-                Date t2 = new Date();
-                System.out.println("Tempo de transporte: " + (t2.getSeconds()-t1.getSeconds()) + " segundos");
+                int t2 = new Date().getSeconds();
+                System.out.println("Tempo de transporte: " + (t2-t1) + " segundos");
                 mutexEntregas.release();
                 espacos.release();
                 limiteTransporte.release();
