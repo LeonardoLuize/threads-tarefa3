@@ -37,7 +37,7 @@ public class Transportadora extends Thread{
                 transporte.start();
                 transporte.join();
                 Date t2 = new Date();
-                System.out.println("Tempo de transporte: " + (t2.getSeconds()-t1.getSeconds()) + "segundos");
+                System.out.println("Tempo de transporte: " + (t2.getSeconds()-t1.getSeconds()) + " segundos");
                 mutexEntregas.release();
                 espacos.release();
                 limiteTransporte.release();
